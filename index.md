@@ -36,8 +36,14 @@ Going back to the 5 columns, they represent how much of that line is in them, so
 
 In the case of the accelerator, I use the central value of those 5 columns to decide whether to accelerate more or less.
 
-The results obtained were 10 minutes, but by making some adjustments it was reduced to 4 minutes.
+The results obtained were 10 minutes, but by making some adjustments it was reduced to 4 minutes, but I have been able to extract a lot of information on how to attack this problem:
+- The car does not suffer from sway when accelerating, braking or turning.
+- The red line is continuous and there is no other object present in the environment that could hinder its detection.
+- There are no level changes, so the detection can be done with a prefixed line.
+- In addition, we have seen some examples where the error can be seen as it is extracted with a vertical line as a reference.
 
 Well, the results are not good at all, now it's time to implement the steps marked by our teacher in the Robotic Vision subject.
 
 ### Day 2: Basic control
+The objective is to implement a right turn or left turn switch, depending on the error obtained with a reference vertical column. In addition, some deadlash is applied to prevent it from continuously rectifying near the equilibrium point.
+
