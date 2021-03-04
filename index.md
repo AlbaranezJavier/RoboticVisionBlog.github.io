@@ -7,7 +7,7 @@ I am Javier Albaráñez Martínez, a student of this university master's program
 
 ## 1. Follow line
 
-### Day 1: Familiarization with the environment
+### Step 1: Familiarization with the environment
 The first thing to do was to set up the practice environment, for this I used the following [website](https://jderobot.github.io/RoboticsAcademy/exercises/AutonomousCars/follow_line/). It describes the necessary steps to set up the website, although some sections are outdated. Our teacher took care of detailing the missing steps.
 
 1. Clone the Robotics Academy repository on your local machine.
@@ -44,6 +44,19 @@ The results obtained were 10 minutes, but by making some adjustments it was redu
 
 Well, the results are not good at all, now it's time to implement the steps marked by our teacher in the Robotic Vision subject.
 
-### Day 2: Basic control
+### Step 2: Basic control
 The objective is to implement a right turn or left turn switch, depending on the error obtained with a reference vertical column. In addition, some deadlash is applied to prevent it from continuously rectifying near the equilibrium point.
 
+This implementation has a strong zig zag component, this is because the basic controller stops driving the turn in one direction when it has passed the optimum point.
+
+To solve this type of problem, I have resorted to resetting the rotation when it is between the optimal solution. But in addition, there was the bug that if the artificial intelligence starts correcting only with the horizon, it starts to advance the gyro earlier and therefore, a goal of this practice is not satisfied. The main objectives are:
+
+- To stay above the red line.
+- To complete the circuit in the shortest possible time.
+
+So, what I have done is to add another line closer to the point of view of the car and I have controlled the importance of each one by setting a weight, therefore they will not affect in the same way the turn of the car.
+
+Then I added memory so it will be able to remember which way it was turning. The next step is to implement a proportional controller, this will allow me to reduce the zig zag effect.
+
+### Step 3: Proportional controller (P)
+This controller is based on adding a Kp component in order to weight the effect of the error.
