@@ -60,3 +60,16 @@ Then I added memory so it will be able to remember which way it was turning. The
 
 ### Step 3: Proportional controller (P)
 This controller is based on adding a Kp component in order to weight the effect of the error.
+
+Implementing this type of controller, there are several differences with the previous one. In this case, how much the vehicle will rotate is determined proportionally by the error measurement obtained.
+
+To calculate this error, I have changed the implementation and now calculate the centroid of the image for a range. This allows me to obtain a more robust implementation of the problem, since I am not limited to a single horizontal line of the camera.
+
+Anyway, I have adjusted the available parameters so that the lap time is as short as possible, so for other circumstances this may not be the best configuration.
+
+The lap time has been reduced to between 33 - 34s. I want to mention the help of a classmate, because in the original formula the value obtained in the previous instant was added, but this made the response worse. When this parameter was eliminated, the times were greatly reduced. 
+
+### Step 4: Controller D to controller PD
+
+In this step, I am going to add a new component to the controller. This component is the derivative of the error, which translates into the difference between the previous error and the current error. This component is added with the proportional controller. The expected consequence of this component is that if the error continues to increase from one instant to the next, the correction applied by the proportional component will be intensified. The opposite is true for the opposite case. In other words, the response will be intensified if the correction is not sufficient and will be damped if it approaches the optimum.
+
