@@ -73,3 +73,30 @@ The lap time has been reduced to between 33 - 34s. I want to mention the help of
 
 In this step, I am going to add a new component to the controller (Kd). This component is the derivative of the error, which translates into the difference between the previous error and the current error. This component is added with the proportional controller. The expected consequence of this component is that if the error continues to increase from one instant to the next, the correction applied by the proportional component will be intensified. The opposite is true for the opposite case. In other words, the response will be intensified if the correction is not sufficient and will be damped if it approaches the optimum.
 
+The results have not been long in coming and this has greatly increased the speed of the vehicle. The oscillations produced by the proportional controller have been greatly reduced.
+
+In addition, in this step the results obtained by the proportional and derivative controller have been used to control the acceleration of the vehicle. The logic behind this design decision is that one expects to accelerate when the error is small, but to brake drastically when there are sudden variations in the track (such as when arriving at a curve from a straight line).
+
+The results obtained have improved, although two alternatives have been explored:
+- One focused on reducing the lap time as much as possible (22 - 23 s).
+- The other seeks to remain more stable on the line (22 - 23 s).
+
+### Step 5: Controller I to controller PID
+
+This is the latest version to be explored. In it appears the constant Ki which multiplies the integral of the error with respect to time. This means that the error will accumulate and its effects are as follows:
+- When a curve step is being performed, this component is forcing a correction in the direction of the curve, compensating for the error that P cannot rectify.
+- On the other hand, if this component is well parameterized, it allows damping the oscillations, but if it is too large it will intensify them.
+
+For this controller, it has been decided to change the way of controlling the accelerator pedal. Now, it starts from a specific speed and is reduced according to the difference between the angle of rotation of the steering wheel at this instant and the previous one. This is intended to make the car accelerate when it is in a stable position and brake in the opposite case.
+
+The central reference of the camera has also been modified, moving it a little to the right, since the camera is not centered with the car.
+
+What has been achieved with this controller is to improve the lap time by keeping the car on the line in a reasonable way (23 - 24s). 
+
+### Step 6: Where is the line?
+
+Another requirement of the practice is to manage the following situation: What happens if the car starts in a position where there is no line? 
+
+To solve this, before entering the execution loop, you are going to create an instruction that applies a turn in a given direction until a line is found.
+
+The purpose of this section is to increase the robustness of the system in certain situations.
