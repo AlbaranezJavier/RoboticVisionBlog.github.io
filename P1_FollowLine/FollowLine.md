@@ -1,16 +1,16 @@
 # Follow line
 
 ## Index
-+ [Step 1: Familiarization with the environment](#step-1:-familiarization-with-the-environment)
-+ [Step 2: Basic control](#step-2:-basic-control)
-+ [Step 3: Proportional controller P](#step-3:-proportional-controller-p)
-+ [Step 4: Controller D to controller PD](#step-4:-controller-d-to-controller-pd)
-+ [Step 5: Controller I to controller PID](#step-5:-controller-i-to-controller-pid)
-+ [Step 6: Where is the line?](#step-6:-where-is-the-line?)
-+ [Step 7: Endurance test](#step-7:-endurance-test)
-+ [Step 8: Reverse](#Step8:Reverse)
-+ [Conclusions h](#conclusions)
-## Step 1: Familiarization with the environment
++ [Familiarization with the environment](#familiarization-with-the-environment)
++ [Basic control](#basic-control)
++ [Proportional controller P](#proportional-controller-p)
++ [Controller D to controller PD](#controller-d-to-controller-pd)
++ [Controller I to controller PID](#controller-i-to-controller-pid)
++ [Where is the line?](#where-is-the-line?)
++ [Endurance test](#endurance-test)
++ [Reverse](#reverse)
++ [Conclusions](#conclusions)
+## Familiarization with the environment
 The first thing to do was to set up the practice environment, for this I used the following [website](https://jderobot.github.io/RoboticsAcademy/exercises/AutonomousCars/follow_line/). It describes the necessary steps to set up the website, although some sections are outdated. Our teacher took care of detailing the missing steps.
 
 1. Clone the Robotics Academy repository on your local machine.
@@ -47,7 +47,7 @@ The results obtained were 10 minutes, but by making some adjustments it was redu
 
 Well, the results are not good at all, now it's time to implement the steps marked by our teacher in the Robotic Vision subject.
 
-## Step 2: Basic control
+## Basic control
 The objective is to implement a right turn or left turn switch, depending on the error obtained with a reference vertical column. In addition, some deadlash is applied to prevent it from continuously rectifying near the equilibrium point.
 
 This implementation has a strong zig zag component, this is because the basic controller stops driving the turn in one direction when it has passed the optimum point.
@@ -65,7 +65,7 @@ Then I added memory so it will be able to remember which way it was turning. The
   <img src="Videos/P1_1.gif" alt="video basic control" width="65%" />
 </p>
 
-## Step 3: Proportional controller P
+## Proportional controller P
 This controller is based on adding a Kp constant in order to weight the effect of the error.
 
 Implementing this type of controller, there are several differences with the previous one. In this case, how much the vehicle will rotate is determined proportionally by the error measurement obtained.
@@ -80,7 +80,7 @@ The lap time has been reduced to between 36 - 37s. I want to mention the help of
   <img src="Videos/ControllerP.gif" alt="video basic control" width="65%" />
 </p>
 
-## Step 4: Controller D to controller PD
+## Controller D to controller PD
 
 In this step, I am going to add a new constant to the controller (Kd). This component is the derivative of the error, which translates into the difference between the previous error and the current error. This component is added with the proportional controller. The expected consequence of this component is that if the error continues to increase from one instant to the next, the correction applied by the proportional component will be intensified. The opposite is true for the opposite case. In other words, the response will be intensified if the correction is not sufficient and will be damped if it approaches the optimum.
 
@@ -94,7 +94,7 @@ The results obtained have improved, the lap time is between 23-24 s, but as you 
   <img src="Videos/ControllerPD.gif" alt="video basic control" width="65%" />
 </p>
 
-## Step 5: Controller I to controller PID
+## Controller I to controller PID
 
 This is the latest version to be explored. In it appears the constant Ki which multiplies the integral of the error with respect to time. This means that the error will accumulate and its effects are as follows:
 - When a curve step is being performed, this component is forcing a correction in the direction of the curve, compensating for the error that P cannot rectify.
@@ -110,7 +110,7 @@ What has been achieved with this controller is to improve the lap time by keepin
   <img src="Videos/ControllerPID.gif" alt="video basic control" width="65%" />
 </p>
 
-## Step 6: Where is the line?
+## Where is the line?
 
 Another requirement of the practice is to manage the following situation: What happens if the car starts in a position where there is no line? 
 To solve this, before entering the execution loop, you are going to create an instruction that applies a turn in a given direction until a line is found.
@@ -121,7 +121,7 @@ The purpose of this section is to increase the robustness of the system in certa
   <img src="Videos/Noline.gif" alt="video basic control" width="65%" />
 </p>
 
-## Step 7: Endurance test
+## Endurance test
 In order to verify that the proposed system is robust enough for this circuit, a test of 9 consecutive laps has been carried out. 
 
 Some faults detected in the simulation are: the chronometer stops working correctly and the fps of the GUI decreases during the simulation, which makes it difficult to test the system.
@@ -129,7 +129,7 @@ Some faults detected in the simulation are: the chronometer stops working correc
   <img src="Videos/9laps.gif" alt="video basic control" width="65%" />
 </p>
 
-## Step 8: Reverse
+## Reverse
 
 I also wanted to check how the car behaves in counterclockwise direction, the lap time is similar to the one obtained in clockwise direction. (24 - 25s)
 
