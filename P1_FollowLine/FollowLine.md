@@ -153,4 +153,4 @@ As a final conclusion, it is completely clear to me that you can create behavior
 
 A very interesting practice! I have learned a lot!
 
-[Go up](#follow-line)
+| [Go up](#follow-line) | [Main page](../index.md) |
