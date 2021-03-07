@@ -8,7 +8,7 @@
 + [Step 5: Controller I to controller PID](#step-5:-controller-i-to-controller-pid)
 + [Step 6: Where is the line?](#step-6:-where-is-the-line?)
 + [Step 7: Endurance test](#step-7:-endurance-test)
-+ [Step 8: Reverse](#reverse)
++ [Step 8: Reverse](#Step-8:-Reverse)
 + [Conclusions](#conclusions)
 ## Step 1: Familiarization with the environment
 The first thing to do was to set up the practice environment, for this I used the following [website](https://jderobot.github.io/RoboticsAcademy/exercises/AutonomousCars/follow_line/). It describes the necessary steps to set up the website, although some sections are outdated. Our teacher took care of detailing the missing steps.
@@ -62,7 +62,7 @@ So, what I have done is to add another line closer to the point of view of the c
 Then I added memory so it will be able to remember which way it was turning. The next step is to implement a proportional controller, this will allow me to reduce the zig zag effect.
 
 <p align="center">
-  <img src="Videos/P1_1.gif" alt="video basic control" width="55%" />
+  <img src="Videos/P1_1.gif" alt="video basic control" width="65%" />
 </p>
 
 ## Step 3: Proportional controller P
@@ -77,7 +77,7 @@ Anyway, I have adjusted the available parameters so that the lap time is as shor
 The lap time has been reduced to between 36 - 37s. I want to mention the help of a classmate, because in the original formula the value obtained in the previous instant was added, but this made the response worse. When this parameter was eliminated, the times were greatly reduced. 
 
 <p align="center">
-  <img src="Videos/ControllerP.gif" alt="video basic control" width="55%" />
+  <img src="Videos/ControllerP.gif" alt="video basic control" width="65%" />
 </p>
 
 ## Step 4: Controller D to controller PD
@@ -91,7 +91,7 @@ In addition, in this step the results obtained by the proportional and derivativ
 The results obtained have improved, the lap time is between 23-24 s, but as you can see in the video below, there are quite a few oscillations.
 
 <p align="center">
-  <img src="Videos/ControllerPD.gif" alt="video basic control" width="55%" />
+  <img src="Videos/ControllerPD.gif" alt="video basic control" width="65%" />
 </p>
 
 ## Step 5: Controller I to controller PID
@@ -107,7 +107,7 @@ The central reference of the camera has also been modified, moving it a little t
 What has been achieved with this controller is to improve the lap time by keeping the car on the line in a reasonable way (23 - 24s).
 
 <p align="center">
-  <img src="Videos/ControllerPID.gif" alt="video basic control" width="55%" />
+  <img src="Videos/ControllerPID.gif" alt="video basic control" width="65%" />
 </p>
 
 ## Step 6: Where is the line?
@@ -118,7 +118,7 @@ To solve this, before entering the execution loop, you are going to create an in
 The purpose of this section is to increase the robustness of the system in certain situations. The main difficulty encountered was that the car detected a line and started to drive at maximum speed, to avoid this, the maximum speed is reached after chasing the red line for a certain period of time. Another not quite correct behavior, is that when the car detects the red line again it acts like a high pressure spring, so it does not seem very natural.
 
 <p align="center">
-  <img src="Videos/Noline.gif" alt="video basic control" width="55%" />
+  <img src="Videos/Noline.gif" alt="video basic control" width="65%" />
 </p>
 
 ## Step 7: Endurance test
@@ -126,7 +126,7 @@ In order to verify that the proposed system is robust enough for this circuit, a
 
 Some faults detected in the simulation are: the chronometer stops working correctly and the fps of the GUI decreases during the simulation, which makes it difficult to test the system.
 <p align="center">
-  <img src="Videos/9laps.gif" alt="video basic control" width="55%" />
+  <img src="Videos/9laps.gif" alt="video basic control" width="65%" />
 </p>
 
 ## Step 8: Reverse
@@ -134,7 +134,7 @@ Some faults detected in the simulation are: the chronometer stops working correc
 I also wanted to check how the car behaves in counterclockwise direction, the lap time is similar to the one obtained in clockwise direction. (24 - 25s)
 
 <p align="center">
-  <img src="Videos/reverse.gif" alt="video basic control" width="55%" />
+  <img src="Videos/reverse.gif" alt="video basic control" width="65%" />
 </p>
 
 ## Conclusions
