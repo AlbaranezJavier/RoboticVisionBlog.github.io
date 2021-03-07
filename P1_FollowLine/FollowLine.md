@@ -8,8 +8,8 @@
 + [Step 5: Controller I to controller PID](#step-5:-controller-i-to-controller-pid)
 + [Step 6: Where is the line?](#step-6:-where-is-the-line?)
 + [Step 7: Endurance test](#step-7:-endurance-test)
-+ [Step 8: Reverse](#Step-8:-Reverse)
-+ [Conclusions](#conclusions)
++ [Step 8: Reverse](#Step8:Reverse)
++ [Conclusions h](#conclusions)
 ## Step 1: Familiarization with the environment
 The first thing to do was to set up the practice environment, for this I used the following [website](https://jderobot.github.io/RoboticsAcademy/exercises/AutonomousCars/follow_line/). It describes the necessary steps to set up the website, although some sections are outdated. Our teacher took care of detailing the missing steps.
 
