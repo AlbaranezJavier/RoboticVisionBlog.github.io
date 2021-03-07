@@ -12,18 +12,18 @@ The first thing to do was to set up the practice environment, for this I used th
 
 1. Clone the Robotics Academy repository on your local machine.
 ```
-  git clone https://github.com/JdeRobot/RoboticsAcademy
+git clone https://github.com/JdeRobot/RoboticsAcademy
 ```
 2. Download [Docker](https://docs.docker.com/get-docker/).
 3. Pull the current distribution of Robotics Academy Docker Image.
 ```
-  docker pull jderobot/robotics-academy
+docker pull jderobot/robotics-academy
 ```
 4. On the local machine navigate to the follow_line exercise which is: RoboticsAcademy/exercises/follow_line/web-template/assets/websocket_address.js, change the variable websocket_address to the IP address through which the container is connected. Usually for Linux machine it is 127.0.0.1 and for Windows is 192.168.99.100.
 
 5. Start a new docker container of the image and keep it running in the background.
 ```
-  docker run -it -p 8080:8080 -p 7681:7681 -p 2303:2303 -p 1905:1905 -p 8765:8765 jderobot/robotics-academy python3.8 manager.py
+docker run -it -p 8080:8080 -p 7681:7681 -p 2303:2303 -p 1905:1905 -p 8765:8765 jderobot/robotics-academy python3.8 manager.py
 ```
 6. Sign up and sign in at [Unibotics](https://unibotics.org/).
 7. Go to the exercise [follow line](https://unibotics.org/academy/login?next=/academy/exercise/follow_line/).
@@ -57,6 +57,10 @@ To solve this type of problem, I have resorted to resetting the rotation when it
 So, what I have done is to add another line closer to the point of view of the car and I have controlled the importance of each one by setting a weight, therefore they will not affect in the same way the turn of the car.
 
 Then I added memory so it will be able to remember which way it was turning. The next step is to implement a proportional controller, this will allow me to reduce the zig zag effect.
+
+<p align="center">
+  <img src="Videos/P1_1.gif" alt="video basic control" width="55%" />
+</p>
 
 ### Step 3: Proportional controller (P)
 This controller is based on adding a Kp component in order to weight the effect of the error.
