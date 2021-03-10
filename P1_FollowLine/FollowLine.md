@@ -9,6 +9,7 @@
 + [Where is the line?](#where-is-the-line)
 + [Endurance test](#endurance-test)
 + [Reverse](#reverse)
++ [Drive safe](#drive-safe)
 + [Conclusions](#conclusions)
 ## Familiarization with the environment
 The first thing to do was to set up the practice environment, for this I used the following [website](https://jderobot.github.io/RoboticsAcademy/exercises/AutonomousCars/follow_line/). It describes the necessary steps to set up the website, although some sections are outdated. Our teacher took care of detailing the missing steps.
@@ -135,6 +136,17 @@ I also wanted to check how the car behaves in counterclockwise direction, the la
 
 <p align="center">
   <img src="Videos/reverse.gif" alt="video basic control" width="65%" />
+</p>
+
+## Drive safe
+In the latter experiment, the requirement to go above the line is sought to be met. At the same time, I try to go as fast as possible. The lap time has been between 28-29s.
+
+In the video below, you can see the final version of the experiment with a couple of laps around the circuit.
+
+To achieve this goal, I have reduced the maximum speed and all other constants.
+
+<p align="center">
+  <img src="Videos/drivesafe.gif" alt="video basic control" width="65%" />
 </p>
 
 ## Conclusions
