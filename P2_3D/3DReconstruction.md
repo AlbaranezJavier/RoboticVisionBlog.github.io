@@ -40,15 +40,31 @@ Then, I converted the images from BGR to HSV, the resulting 3-channel images wer
 ### 2. Epipolar calculation
 As can be seen in the figure of this subsection, the epipolar line can be obtained by projecting the points p1 and a1 on the left camera. With these points a line l1 is generated and by calculating the intersections with the limits of the images, the pixels that form this line can be calculated by the formula y = mx + b.
 
+<p align="center">
+  <img src="Media/epipolar.PNG" alt="epipolar" width="55%" />
+</p>
+
 ### 3. Homologous patches
 An 11x11 patch is obtained in the left image and the l1 line of the right image is traversed by applying an MSE measure, keeping the smallest error of all. Once the patches are matched, the row and column values of the winning pixel are stored in an array. To filter out homologues that are not similar but have been matched because there is no better alternative, they are discarded if they exceed an error limit.
+
+<p align="center">
+  <img src="Media/parcheshomologos.PNG" alt="patches" width="55%" />
+</p>
 
 ## Triangulation
 This section aims to determine the 3d position of the homologous point found in both images.
 
-For this, the vectors P1 (a1->p1), P2 (a2->p2) and T (a1->a2) are calculated. This information allows us to construct a system of equations to obtain the scale of the vectors P1, P2 and P3. This system is expressed as: t P1 + w P3 - s P2 = T. In addition, a further constraint is added, if the back projections of the cameras have exceed a certain limit, these points are discarded and are not painted in the environment.
+<p align="center">
+  <img src="Media/triangulación.PNG" alt="triangulation" width="55%" />
+</p>
+
+For this, the vectors P1 (a1->p1), P2 (a2->p2) and T (a1->a2) are calculated. This information allows us to construct a system of equations to obtain the scale of the vectors P1, P2 and P3. This system is expressed as: **t P1 + w P3 - s P2 = T**. In addition, a further constraint is added, if the back projections of the cameras have exceed a certain limit, these points are discarded and are not painted in the environment.
 
 Finally, these points are transferred to the virtual environment and painted with the value of the winning pixel in the homologous patches section.
+
+<p align="center">
+  <img src="Media/reconstruccion_frontal.PNG" alt="draw" width="55%" />
+</p>
 
 ## Optimization
 
@@ -63,14 +79,20 @@ Finally, these points are transferred to the virtual environment and painted wit
 
 The 3D points drawn in the environment correspond to the proportions of the real 3D environment and it is interesting to see how it correctly shows which characters are in front of each other.
 
-The following video shows a demo of the result obtained by the algorithm, the execution time is in real time, so you can see how the execution is fluid. The images below show: on the left the laplacine image (where the scanned pixels are removed) and on the right the last scanned epipolar line is represented with a blue line.
-
-
-
-In short, the execution of this exercise has allowed to test the knowledge acquired during the course, it has been possible to reconstruct a 3D scene knowing only the position of the cameras in the environment (extrinsic) and the position of the pixels in the 3D environment (intrinsic, because the focal length is needed).
+<p align="center">
+  <img src="Media/3d.jpeg" alt="env" width="55%" />
+</p>
 
 <p align="center">
-  <img src="Media/ControllerPD.gif" alt="video basic control" width="65%" />
+  <img src="Media/reconstrucion_cenital.PNG" alt="cenital" width="55%" />
 </p>
+
+The following video shows a demo of the result obtained by the algorithm, the execution time is in real time, so you can see how the execution is fluid. The images below show: on the left the laplacine image (where the scanned pixels are removed) and on the right the last scanned epipolar line is represented with a blue line.
+
+<p align="center">
+  <img src="Media/ezgif.com-gif-maker.gif" alt="video basic control" width="65%" />
+</p>
+
+In short, the execution of this exercise has allowed to test the knowledge acquired during the course, it has been possible to reconstruct a 3D scene knowing only the position of the cameras in the environment (extrinsic) and the position of the pixels in the 3D environment (intrinsic, because the focal length is needed).
 
 | [Go up](#3d-reconstruction) | [Main page](../index.md) |
