@@ -75,7 +75,9 @@ Finally, these points are transferred to the virtual environment and painted wit
 - A range of rows to be scanned from the image is set, since the position of the figures is known.
 - The intensity values of the Laplacian images are used to divide the computational load in the drawing of the 3D points, painting first those with the highest value and increasing the search window in each iteration.
 
-## The execution time is less than a minute, but the inconsistency of the refresh rate in the virtualization of the exercise has prevented a more accurate measurement.
+## Results and conclusions
+
+The execution time is less than a minute, but the inconsistency of the refresh rate in the virtualization of the exercise has prevented a more accurate measurement.
 
 The 3D points drawn in the environment correspond to the proportions of the real 3D environment and it is interesting to see how it correctly shows which characters are in front of each other.
 
